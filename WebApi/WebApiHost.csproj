@@ -95,8 +95,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Message.cs" />
-    <Compile Include="MessagesController.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="ApiControllers\MessagesController.cs" />
     <Compile Include="WebHookFilterProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

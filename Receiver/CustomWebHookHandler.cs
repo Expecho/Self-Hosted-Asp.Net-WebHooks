@@ -6,22 +6,17 @@ namespace Receiver
 {
     public class CustomWebHookHandler : WebHookHandler
     {
-        public CustomWebHookHandler()
-        {
-            Receiver = "custom";
-        } 
-
         public override Task ExecuteAsync(string generator, WebHookHandlerContext context)
         {
-            //var notifications = context.GetDataOrDefault<CustomNotifications>();
-            //foreach (var notification in notifications.Notifications)
-            //{
-            //    Console.WriteLine(string.Join(", ", notification.Keys));
-            //}
+            var notifications = context.GetDataOrDefault<CustomNotifications>();
+            
+            Console.WriteLine($"Received notification with payload:");
+            foreach (var notification in notifications.Notifications)
+            {
+                Console.WriteLine(string.Join(", ", notification.Values));
+            }
 
             return Task.FromResult(true);
         }
-
-        
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WebApiHost
+﻿namespace WebApiHost.Models
 {
     public class Message
     {
