@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.Owin.Hosting;
 
@@ -27,7 +28,10 @@ namespace Receiver
                 {
                     WebHookUri = $"{webhookReceiverBaseAddress}/api/webhooks/incoming/custom",
                     Description = "A message is posted.",
-                    Secret = "12345678901234567890123456789012"
+                    Secret = "12345678901234567890123456789012",
+
+                    // Remove the line below to receive all events, including the MessageRemovedEvent event.
+                    Filters = new List<string> { "MessagePostedEvent" } 
                 };
 
                 var result = httpClient.PostAsJsonAsync($"http://{Environment.MachineName}.deheer-groep.nl:9000/api/webhooks/registrations", registration).Result;
