@@ -4,7 +4,7 @@ Self hosted custom webhook receiver and sender
 The solution contains 2 projects
 
 ## Receiver
-This console application sends a registration for a Webhook and receieves message of the Webhook.
+This console application sends a registration for a Webhook and receives message of the Webhook. It also calls the api that triggers the Webhook to send a notification.
 
 ## Web Api Host
 This console application hosts the Webhook registration endpoints and hosts a web api controller that triggers the Webhook.
