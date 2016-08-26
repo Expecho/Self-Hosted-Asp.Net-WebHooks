@@ -1,4 +1,4 @@
-# WebHooks-PoC
+# WebHooks
 Self hosted custom webhook receiver and sender
 
 The solution contains 2 projects
