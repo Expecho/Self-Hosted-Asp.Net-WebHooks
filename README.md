@@ -1,5 +1,5 @@
 # Asp.Net WebHooks
-Self hosted custom webhook receiver and sender
+Self hosted custom webhook receiver and sender.
 More about webhooks: https://docs.asp.net/projects/webhooks/en/latest/
 
 The solution contains 2 projects:
