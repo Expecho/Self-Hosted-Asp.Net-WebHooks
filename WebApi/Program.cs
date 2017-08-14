@@ -9,7 +9,7 @@ namespace WebApiHost
     {
         static void Main(string[] args)
         {
-            var webHookSenderBaseAddress = $"http://{Environment.MachineName}.deheer-groep.nl:9000";
+            var webHookSenderBaseAddress = $"http://localhost:9000";
 
             var handler = new HttpClientHandler
             {
