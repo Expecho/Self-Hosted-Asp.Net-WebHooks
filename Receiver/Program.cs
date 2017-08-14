@@ -9,8 +9,8 @@ namespace Receiver
     {
         static void Main(string[] args)
         {
-            var webhookReceiverBaseAddress = $"http://{Environment.MachineName}.deheer-groep.nl:9090/";
-            var webhookSenderBaseAddress = $"http://{Environment.MachineName}.deheer-groep.nl:9000";
+            var webhookReceiverBaseAddress = $"http://localhost:9090/";
+            var webhookSenderBaseAddress = $"http://localhost:9000";
 
             var handler = new HttpClientHandler
             {
