@@ -28,6 +28,7 @@ namespace Receiver
                 // Create a webhook registration to our custom controller
                 var registration = new Registration
                 {
+                    // To skip webhook verification use: WebHookUri = $"{webhookReceiverBaseAddress}/api/webhook?NoEcho=1",
                     WebHookUri = $"{webhookReceiverBaseAddress}/api/webhook",
                     Description = "A message is posted.",
                     Secret = "12345678901234567890123456789012",
