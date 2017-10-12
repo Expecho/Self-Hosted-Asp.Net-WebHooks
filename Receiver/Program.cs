@@ -9,8 +9,8 @@ namespace Receiver
     {
         static void Main(string[] args)
         {
-            var webhookReceiverBaseAddress = $"http://localhost:9090/";
-            var webhookSenderBaseAddress = $"http://localhost:9000";
+            var webhookReceiverBaseAddress = $"http://localhost:9001/";
+            var webhookSenderBaseAddress = $"http://localhost:9002";
 
             var handler = new HttpClientHandler
             {
@@ -25,10 +25,10 @@ namespace Receiver
                 Console.WriteLine("Press any key to register"); 
                 Console.ReadKey();
 
-                // Create a webhook registration
+                // Create a webhook registration to our custom controller
                 var registration = new Registration
                 {
-                    WebHookUri = $"{webhookReceiverBaseAddress}/api/webhooks/incoming/custom",
+                    WebHookUri = $"{webhookReceiverBaseAddress}/api/webhook",
                     Description = "A message is posted.",
                     Secret = "12345678901234567890123456789012",
 
@@ -36,8 +36,23 @@ namespace Receiver
                     Filters = new List<string> { "MessagePostedEvent" } 
                 };
 
-                // Register our webhook
+                // Register our webhook using the custom controller
                 var result = httpClient.PostAsJsonAsync($"{webhookSenderBaseAddress}/api/webhooks/registrations", registration).Result;
+                Console.WriteLine(result.IsSuccessStatusCode ? "Registration succesful" : "Registration failed");
+
+                // Create a webhook registration to the build in webhook controller
+                registration = new Registration
+                {
+                    WebHookUri = $"{webhookReceiverBaseAddress}/api/webhooks/incoming/custom",
+                    Description = "A message is removed.",
+                    Secret = "12345678901234567890123456789012",
+
+                    // Remove the line below to receive all events, including the MessageRemovedEvent event.
+                    Filters = new List<string> { "MessageRemovedEvent" }
+                };
+
+                // Register our webhook using the build in WebHookHandler
+                result = httpClient.PostAsJsonAsync($"{webhookSenderBaseAddress}/api/webhooks/registrations", registration).Result;
                 Console.WriteLine(result.IsSuccessStatusCode ? "Registration succesful" : "Registration failed");
 
                 Console.WriteLine("Press 'm' to send a message");

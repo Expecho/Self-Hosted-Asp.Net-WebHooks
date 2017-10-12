@@ -1,17 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Receiver
 {
-    public class WebhookController
+    [RoutePrefix("api/webhook")]
+    public class WebhookController : ApiController
     {
+        [HttpPost]
+        [Route("")]
         public void Post(object message)
         {
-            
+            Console.WriteLine($"Received webhook: {message}");
+        }
+
+        [HttpGet]
+        [Route("")]
+        public HttpResponseMessage Get(string echo)
+        {
+            Console.WriteLine($"Received echo request for validation of the registration");
+
+            var resp = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(echo, Encoding.UTF8, "text/plain")
+            };
+            return resp;
         }
     }
 }

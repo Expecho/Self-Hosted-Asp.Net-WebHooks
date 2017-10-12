@@ -22,6 +22,8 @@ namespace Receiver
 
             config.InitializeReceiveCustomWebHooks();
 
+            config.EnsureInitialized();
+
             var traceWriter = config.EnableSystemDiagnosticsTracing();
             traceWriter.IsVerbose = true;
             traceWriter.MinimumLevel = TraceLevel.Error;
