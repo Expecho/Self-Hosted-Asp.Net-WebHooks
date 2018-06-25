@@ -9,6 +9,7 @@ This console application sends a registration for a Webhook and receives message
 
 There are two ways to receive custom webhooks. One is using the build in mechanism that works by implementing your own `WebHookHandler`:
 
+```csharp
     public class CustomWebHookHandler : WebHookHandler
     {
         public override Task ExecuteAsync(string generator, WebHookHandlerContext context)
@@ -24,7 +25,8 @@ There are two ways to receive custom webhooks. One is using the build in mechani
             return Task.FromResult(true);
         }
     }
-    
+```
+
 *([Source](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/CustomWebHookHandler.cs))*
     
 For this to work the next line is added to the [web api configuration section](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/Startup.cs#L23)
@@ -41,6 +43,7 @@ This console application hosts the Webhook registration endpoints and hosts a we
 
 Most of the configuration to support custom webhook registrations is done [here](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/WebApi/Startup.cs#L20):
 
+```csharp
     var config = new HttpConfiguration();
 
     config.MapHttpAttributeRoutes();
@@ -56,6 +59,7 @@ Most of the configuration to support custom webhook registrations is done [here]
 
     HttpListener listener = (HttpListener)appBuilder.Properties["System.Net.HttpListener"];
     listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication;
+```    
 
 ## Usage
 Set the startup projects of the solution to both projects and run the solution. Wait until both projects are fully loaded and then start interacting according to the instructions given.
@@ -70,6 +74,7 @@ If you create your own controller with a POST method to facilitate incoming webh
 
 To disable this verification you can include the NoEcho parameter upon registration like this:
 
+```csharp
     // Create a webhook registration to our custom controller
     var registration = new Registration
     {
@@ -80,5 +85,6 @@ To disable this verification you can include the NoEcho parameter upon registrat
         // Remove the line below to receive all events, including the MessageRemovedEvent event.
          Filters = new List<string> { "MessagePostedEvent" } 
      };
+```
 
 *(See [the registration](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/Program.cs#L28) and [the GET method](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/WebhookController.cs#L21))*
