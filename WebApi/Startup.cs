@@ -1,7 +1,7 @@
 using System.Net;
 using System.Web.Http;
-using Owin;
 using System.Web.Http.Tracing;
+using Owin;
 
 namespace WebApiHost
 {
@@ -20,7 +20,7 @@ namespace WebApiHost
             config.InitializeCustomWebHooks();
             config.InitializeCustomWebHooksApis();
 
-            HttpListener listener = (HttpListener)appBuilder.Properties["System.Net.HttpListener"];
+            var listener = (HttpListener)appBuilder.Properties["System.Net.HttpListener"];
             listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication;
 
             var traceWriter = config.EnableSystemDiagnosticsTracing();

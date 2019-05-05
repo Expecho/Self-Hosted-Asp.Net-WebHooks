@@ -29,8 +29,7 @@ namespace WebApiHost.ApiControllers
         {
             var messageToDelete = Messages.FirstOrDefault(m => m.Id == id);
 
-            if (messageToDelete != null)
-                Messages.Remove(messageToDelete);
+            Messages?.Remove(messageToDelete);
 
             await this.NotifyAsync(WebHookFilterProvider.MessageRemovedEvent, new { Id = id });
             Console.WriteLine($"MessageRemovedEvent Notification send for message with Id {id}");

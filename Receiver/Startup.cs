@@ -11,7 +11,7 @@ namespace Receiver
         {
             var config = new HttpConfiguration();
 
-            var controllerType = typeof (WebHookReceiversController);
+            _ = typeof (WebHookReceiversController);
             
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(

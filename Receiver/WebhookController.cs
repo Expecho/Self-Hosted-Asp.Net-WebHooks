@@ -20,7 +20,7 @@ namespace Receiver
         [Route("")]
         public HttpResponseMessage Get(string echo)
         {
-            Console.WriteLine($"Received echo request for validation of the registration");
+            Console.WriteLine("Received echo request for validation of the registration");
 
             var resp = new HttpResponseMessage(HttpStatusCode.OK)
             {

@@ -10,7 +10,7 @@ namespace Receiver
         {
             var notifications = context.GetDataOrDefault<CustomNotifications>();
             
-            Console.WriteLine($"Received notification with payload:");
+            Console.WriteLine("Received notification with payload:");
             foreach (var notification in notifications.Notifications)
             {
                 Console.WriteLine(string.Join(", ", notification.Values));
