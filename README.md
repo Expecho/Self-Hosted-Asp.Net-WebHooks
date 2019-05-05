@@ -1,6 +1,6 @@
 # Asp.Net WebHooks
 Self hosted custom webhook receiver and sender.
-More about webhooks: https://docs.asp.net/projects/webhooks/en/latest/. The product repo can be found [here](https://github.com/aspnet/WebHooks).
+More about webhooks: https://docs.asp.net/projects/webhooks/en/latest/. The product repo can be found [here](https://github.com/aspnet/aspnetwebhooks).
 
 The solution contains 2 projects:
 
