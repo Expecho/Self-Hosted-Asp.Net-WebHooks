@@ -12,7 +12,7 @@ namespace Receiver
             var config = new HttpConfiguration();
 
             _ = typeof (WebHookReceiversController);
-            
+
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                     "DefaultApi",

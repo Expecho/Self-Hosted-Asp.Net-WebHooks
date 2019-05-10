@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNet.WebHooks;
+using Microsoft.AspNet.WebHooks.Services;
 using Microsoft.Owin.Hosting;
 using WebApiHost.Models;
 
@@ -16,6 +18,11 @@ namespace WebApiHost
             {
                 UseDefaultCredentials = true
             };
+
+            // Microsoft.AspNet.WebHooks.Custom.SqlStorage
+            // Microsoft.AspNet.WebHooks.Custom.AzureStorage
+            // Microsoft.AspNet.WebHooks.Custom.MongoStorage
+            CustomServices.SetStore(new MemoryWebHookStore());
 
             // Start OWIN host 
             using (WebApp.Start<Startup>(webHookSenderBaseAddress))
