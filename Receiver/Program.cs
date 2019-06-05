@@ -46,7 +46,7 @@ namespace Receiver
                 // Create a webhook registration to the build in webhook controller
                 registration = new Registration
                 {
-                    WebHookUri = $"{webhookReceiverBaseAddress}/api/webhook",
+                    WebHookUri = $"{webhookReceiverBaseAddress}/api/webhooks/incoming/custom",
                     Description = "A message is removed.",
                     Secret = "12345678901234567890123456789012",
 

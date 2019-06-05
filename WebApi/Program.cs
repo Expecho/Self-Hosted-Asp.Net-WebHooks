@@ -22,7 +22,7 @@ namespace WebApiHost
             // Microsoft.AspNet.WebHooks.Custom.SqlStorage
             // Microsoft.AspNet.WebHooks.Custom.AzureStorage
             // Microsoft.AspNet.WebHooks.Custom.MongoStorage
-            CustomServices.SetStore(new MemoryWebHookStore());
+            //CustomServices.SetStore(new MemoryWebHookStore());
 
             // Start OWIN host 
             using (WebApp.Start<Startup>(webHookSenderBaseAddress))

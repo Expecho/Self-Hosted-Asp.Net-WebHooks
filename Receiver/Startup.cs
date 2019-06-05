@@ -1,6 +1,5 @@
 using System.Web.Http;
 using System.Web.Http.Tracing;
-using Microsoft.AspNet.WebHooks.Controllers;
 using Owin;
 
 namespace Receiver
@@ -11,7 +10,7 @@ namespace Receiver
         {
             var config = new HttpConfiguration();
 
-            _ = typeof (WebHookReceiversController);
+            _ = new CustomWebHookHandler();
 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
@@ -21,12 +20,12 @@ namespace Receiver
                 );
 
             config.InitializeReceiveCustomWebHooks();
-
+        
             config.EnsureInitialized();
 
             var traceWriter = config.EnableSystemDiagnosticsTracing();
             traceWriter.IsVerbose = true;
-            traceWriter.MinimumLevel = TraceLevel.Error;
+            traceWriter.MinimumLevel = TraceLevel.Info;
 
             appBuilder.UseWebApi(config);
         }
