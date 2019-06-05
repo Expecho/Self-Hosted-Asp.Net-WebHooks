@@ -88,3 +88,11 @@ To disable this verification you can include the NoEcho parameter upon registrat
 ```
 
 *(See [the registration](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/Program.cs#L28) and [the GET method](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/WebhookController.cs#L21))*
+
+## Persisted registrations
+
+This example, as most examples found regarding this topic, uses an in-memory store to store registrations. To persist registration you can use an [out-of-the box solution](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/master/WebApi/Program.cs#L22) or write your own.
+
+## Secrets
+
+When using a [custom webhook handler](https://github.com/Expecho/Self-Hosted-Asp.Net-WebHooks/blob/4ea52401150c47a647d2ffebdc4794573ebfe2a0/Receiver/CustomWebHookHandler.cs) it is important to have matching secrets using the `MS_WebHookReceiverSecret_Custom` application setting.
